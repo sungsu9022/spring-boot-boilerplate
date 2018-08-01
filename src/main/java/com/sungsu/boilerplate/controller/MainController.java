@@ -4,9 +4,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by seongsuPark on 2018. 6. 17..
- */
 @RestController
 public class MainController {
 
