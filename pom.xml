@@ -6,7 +6,7 @@
 	<groupId>com.sungsu</groupId>
 	<artifactId>boilerplate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>boilerplate</name>
 	<description>Demo project for Spring Boot</description>
@@ -22,6 +22,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<swagger2.version>2.9.2</swagger2.version>
+		<lombok.version>1.18.2</lombok.version>
+		<deploy-path>${basedir}/deploy</deploy-path>
 	</properties>
 
 	<dependencies>
@@ -36,11 +39,31 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+			<version>${lombok.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<!-- spring boot -->
+
+		<!-- swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger2.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -51,8 +74,25 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webappDirectory>${deploy-path}</webappDirectory>
+					<webResources>
+						<resource>
+							<directory>${project.basedir}/src/main/webapp</directory>
+							<!--<includes>
+                                <include>static/vendor/**</include>
+                            </includes>-->
+						</resource>
+						<!-- <resource>
+                             <directory>${project.build.directory}/prepare</directory>
+                             <includes>
+                                 <include>**/**</include>
+                             </includes>
+                         </resource>-->
+					</webResources>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
