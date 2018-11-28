@@ -1,13 +1,12 @@
 package com.sungsu.boilerplate.controller;
 
-import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class MainController {
 
-    @GetMapping(value = "/main", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = {"/", "/main"})
     public String main() {
         return "test";
     }
