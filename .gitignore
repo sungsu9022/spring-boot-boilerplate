@@ -26,3 +26,5 @@
 /deploy/
 node_modules/
 .java-version
+
+application.pid
