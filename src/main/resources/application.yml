@@ -33,3 +33,6 @@ spring:
         cache.use_query_cache: false
         generate_statistics: true
         cache.region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+
+env:
+  phase: local

@@ -3,11 +3,16 @@ package com.sungsu.boilerplate.app.main;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
-public class MainController {
+import lombok.RequiredArgsConstructor;
 
-    @GetMapping(value = {"/", "/main"})
-    public String main() {
-        return "index";
-    }
+@Controller
+@RequiredArgsConstructor
+public class MainController {
+	private final MainService mainService;
+
+	@GetMapping(value = {"/", "/main"})
+	public String main() {
+		mainService.method1();
+		return "index";
+	}
 }
