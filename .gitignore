@@ -28,3 +28,4 @@ node_modules/
 .java-version
 
 application.pid
+src/main/webapp/WEB-INF/classes/
